@@ -46,8 +46,14 @@ namespace TranscaccionesBacarias
         }
         public decimal tranferirDinero(decimal saldo)
         {
-            this.Saldo -= saldo;
-            return saldo;
+            if (saldo >= 0)
+            {
+                this.Saldo -= saldo;
+                return saldo;
+            }
+            else
+                return 0;
+            
         }
     }
 }

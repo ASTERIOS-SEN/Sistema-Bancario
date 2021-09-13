@@ -173,15 +173,11 @@ namespace TranscaccionesBacarias
 
                     default:                        
                             Console.WriteLine("opcion invalida");
-                        break;
-                        
-
+                        break;                       
                 }
              
                     respuesta = false;
             } while (opcion>=0 || opcion <=6 );
-
-
         }
     }
 }
