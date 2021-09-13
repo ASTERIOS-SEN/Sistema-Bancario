@@ -1,0 +1,6 @@
+C:\Users\DANNYSEVILLA\Documents\III AÑO ING-SISTEMAS DE INFORMACION\TranscaccionesBacarias\TranscaccionesBacarias\bin\Debug\TranscaccionesBacarias.exe.config
+C:\Users\DANNYSEVILLA\Documents\III AÑO ING-SISTEMAS DE INFORMACION\TranscaccionesBacarias\TranscaccionesBacarias\bin\Debug\TranscaccionesBacarias.exe
+C:\Users\DANNYSEVILLA\Documents\III AÑO ING-SISTEMAS DE INFORMACION\TranscaccionesBacarias\TranscaccionesBacarias\bin\Debug\TranscaccionesBacarias.pdb
+C:\Users\DANNYSEVILLA\Documents\III AÑO ING-SISTEMAS DE INFORMACION\TranscaccionesBacarias\TranscaccionesBacarias\obj\Debug\TranscaccionesBacarias.csprojResolveAssemblyReference.cache
+C:\Users\DANNYSEVILLA\Documents\III AÑO ING-SISTEMAS DE INFORMACION\TranscaccionesBacarias\TranscaccionesBacarias\obj\Debug\TranscaccionesBacarias.exe
+C:\Users\DANNYSEVILLA\Documents\III AÑO ING-SISTEMAS DE INFORMACION\TranscaccionesBacarias\TranscaccionesBacarias\obj\Debug\TranscaccionesBacarias.pdb
