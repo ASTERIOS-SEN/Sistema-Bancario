@@ -91,10 +91,18 @@ namespace TranscaccionesBacarias
                             {
                                 Console.Write("[Digite la cantidad de dinero a retirar]:");
                                 movimientoSaldo = decimal.Parse(Console.ReadLine());
-                                cuenta1.RetirarDinero(movimientoSaldo);
+                                
                             Console.Clear();
                             Console.WriteLine("\n\n");
-                            Console.WriteLine("Retiro realizado con exito en la Cuenta " + cuenta1.NumeroDeCuenta + " del Propietario " + cuenta1.Nombre + " " + cuenta1.Apellido);
+                            if (cuenta1.RetirarDinero(movimientoSaldo) >= 1)
+                            {
+                                cuenta1.RetirarDinero(movimientoSaldo);
+                                Console.WriteLine("Retiro realizado con exito en la Cuenta " + cuenta1.NumeroDeCuenta + " del Propietario " + cuenta1.Nombre + " " + cuenta1.Apellido);
+                            }
+                            else
+                            {
+                                Console.WriteLine("No posee fondos suficientes! :(");
+                            }
                             Console.ReadKey();
                             break;
                             }
@@ -102,10 +110,18 @@ namespace TranscaccionesBacarias
                             {
                                 Console.Write("[Digite la cantidad de dinero a retirar]:");
                                 movimientoSaldo = decimal.Parse(Console.ReadLine());
-                                cuenta2.RetirarDinero(movimientoSaldo);
+                                
                             Console.Clear();
                             Console.WriteLine("\n\n");
-                            Console.WriteLine("Retiro realizado con exito en la Cuenta " + cuenta2.NumeroDeCuenta + " del Propietario " + cuenta2.Nombre + " " + cuenta2.Apellido);
+                            if (cuenta2.RetirarDinero(movimientoSaldo) >= 1)
+                            {
+                                cuenta2.RetirarDinero(movimientoSaldo);
+                                Console.WriteLine("Retiro realizado con exito en la Cuenta " + cuenta1.NumeroDeCuenta + " del Propietario " + cuenta1.Nombre + " " + cuenta1.Apellido);
+                            }
+                            else
+                            {
+                                Console.WriteLine("No posee fondos suficientes! :(");
+                            }
                             Console.ReadKey();
                             break;
                             }
@@ -129,10 +145,18 @@ namespace TranscaccionesBacarias
                             {
                                 Console.Write("[Digite la cantidad de dinero a transferir]:");
                                 movimientoSaldo = decimal.Parse(Console.ReadLine());
-                                cuenta2.ingresarDinero(cuenta1.tranferirDinero(movimientoSaldo));
+                                
                             Console.Clear();
                             Console.WriteLine("\n\n");
-                            Console.WriteLine("Tranferencia realizada con exito en la Cuenta " + cuenta2.NumeroDeCuenta + " del Propietario " + cuenta2.Nombre + " " + cuenta2.Apellido);
+                            if (cuenta1.tranferirDinero(movimientoSaldo) >= 1)
+                            {
+                                cuenta2.ingresarDinero(cuenta1.tranferirDinero(movimientoSaldo));
+                                Console.WriteLine("Tranferencia realizada con exito en la Cuenta " + cuenta1.NumeroDeCuenta + " del Propietario " + cuenta1.Nombre + " " + cuenta1.Apellido);
+                            }
+                            else
+                            {
+                                Console.WriteLine("No posee fondos suficientes para realizar la tranferencia! :(");
+                            }
                             Console.ReadKey();
                             break;
                             }
@@ -140,10 +164,19 @@ namespace TranscaccionesBacarias
                             {
                                 Console.Write("[Digite la cantidad de dinero a tranferir]:");
                                 movimientoSaldo = decimal.Parse(Console.ReadLine());
-                                cuenta1.ingresarDinero(cuenta2.tranferirDinero(movimientoSaldo));
+                                
                             Console.Clear();
                             Console.WriteLine("\n\n");
-                            Console.WriteLine("Tranferencia realizada con exito en la Cuenta " + cuenta1.NumeroDeCuenta + " del Propietario " + cuenta1.Nombre + " " + cuenta1.Apellido);
+                            if(cuenta2.tranferirDinero(movimientoSaldo) >= 1)
+                            {
+                                cuenta1.ingresarDinero(cuenta2.tranferirDinero(movimientoSaldo));
+                                Console.WriteLine("Tranferencia realizada con exito en la Cuenta " + cuenta1.NumeroDeCuenta + " del Propietario " + cuenta1.Nombre + " " + cuenta1.Apellido);
+                            }
+                            else
+                            {
+                                Console.WriteLine("No posee fondos suficientes para realizar la tranferencia! :(");
+                            }
+                            
                             Console.ReadKey();
                             break;
                             }

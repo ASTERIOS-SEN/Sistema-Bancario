@@ -40,20 +40,29 @@ namespace TranscaccionesBacarias
         {
             this.Saldo += saldo;
         }
-        public void RetirarDinero(decimal saldo)
+        public decimal RetirarDinero(decimal saldo)
         {
-            this.Saldo -= saldo;
-        }
-        public decimal tranferirDinero(decimal saldo)
-        {
-            if (saldo >= 0)
+            if (this.Saldo == 0)
+            {
+                return 0;
+            }
+            else
             {
                 this.Saldo -= saldo;
                 return saldo;
             }
-            else
+        }
+        public decimal tranferirDinero(decimal saldo)
+        {
+            if (this.Saldo == 0)
+            {                
                 return 0;
-            
+            }
+            else
+            {
+                this.Saldo -= saldo;
+                return saldo;
+            }                          
         }
     }
 }
