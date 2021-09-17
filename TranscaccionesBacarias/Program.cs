@@ -56,7 +56,7 @@ namespace TranscaccionesBacarias
                             cuenta1.ingresarDinero(movimientoSaldo);
                             Console.Clear();
                             Console.WriteLine("\n\n");
-                            Console.WriteLine("Deposito realizado con exito en la Cuenta "+cuenta1.NumeroDeCuenta+" del Propietario "+cuenta1.Nombre +" "+ cuenta1.Apellido);
+                            Console.WriteLine("Deposito realizado con exito en la Cuenta "+cuenta1.DatosCuenta());
                             Console.ReadKey();
                             break;
                             }
@@ -67,7 +67,7 @@ namespace TranscaccionesBacarias
                                 cuenta2.ingresarDinero(movimientoSaldo);
                             Console.Clear();
                             Console.WriteLine("\n\n");
-                            Console.WriteLine("Deposito realizado con exito en la Cuenta " + cuenta2.NumeroDeCuenta + " del Propietario " + cuenta2.Nombre + " " + cuenta2.Apellido);
+                            Console.WriteLine("Deposito realizado con exito en la Cuenta " + cuenta2.DatosCuenta());
                             Console.ReadKey();
                             break;
                             }
@@ -97,7 +97,7 @@ namespace TranscaccionesBacarias
                             if (cuenta1.RetirarDinero(movimientoSaldo) >= 1)
                             {
                                 cuenta1.RetirarDinero(movimientoSaldo);
-                                Console.WriteLine("Retiro realizado con exito en la Cuenta " + cuenta1.NumeroDeCuenta + " del Propietario " + cuenta1.Nombre + " " + cuenta1.Apellido);
+                                Console.WriteLine("Retiro realizado con exito en la Cuenta " + cuenta1.DatosCuenta());
                             }
                             else
                             {
@@ -116,7 +116,7 @@ namespace TranscaccionesBacarias
                             if (cuenta2.RetirarDinero(movimientoSaldo) >= 1)
                             {
                                 cuenta2.RetirarDinero(movimientoSaldo);
-                                Console.WriteLine("Retiro realizado con exito en la Cuenta " + cuenta1.NumeroDeCuenta + " del Propietario " + cuenta1.Nombre + " " + cuenta1.Apellido);
+                                Console.WriteLine("Retiro realizado con exito en la Cuenta " + cuenta1.DatosCuenta());
                             }
                             else
                             {
@@ -191,17 +191,9 @@ namespace TranscaccionesBacarias
                         break;
 
                     case 5:
-                        
-                            Console.WriteLine("[Numero de cuenta]: " + cuenta1.NumeroDeCuenta);
-                            Console.WriteLine("[Propietario]: " + cuenta1.Nombre + " " + cuenta1.Apellido);
-                            Console.WriteLine("[Saldo]: " + cuenta1.Saldo);
-                            Console.WriteLine("[Estado]: " + cuenta1.Estado);
-                            Console.WriteLine("\n");
-                            Console.WriteLine("[Numero de cuenta]: " + cuenta2.NumeroDeCuenta);
-                            Console.WriteLine("[Propietario]: " + cuenta2.Nombre + " " + cuenta2.Apellido);
-                            Console.WriteLine("[Saldo]: " + cuenta2.Saldo);
-                            Console.WriteLine("[Estado]: " + cuenta2.Estado);
-                            Console.ReadKey();
+                        Console.WriteLine(cuenta1.DatosCuenta());
+                        Console.WriteLine(cuenta2.DatosCuenta());
+                        Console.ReadKey();
                         break;
 
                     default:                        

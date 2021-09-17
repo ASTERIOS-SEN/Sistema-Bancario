@@ -64,5 +64,10 @@ namespace TranscaccionesBacarias
                 return saldo;
             }                          
         }
+
+        public string DatosCuenta()
+        {
+            return NumeroDeCuenta +" " + Nombre+ " "+ Apellido + " " + Saldo;
+        }
     }
 }
