@@ -21,24 +21,57 @@ namespace TranscaccionesBacarias
             Cuenta cuenta2 = new Cuenta(19441, 5050, "Maycoll", "Jaramillo", DateTime.Now, "Activo", 2000);
 
             decimal movimientoSaldo = 0;
-            int opcion = 1;
-     
+            int opcion = 0;
+            int auxNumCuenta = 0;
+            int auxpin1 = 0;
+            int error = 0;
+
+
             do
             {
                 Console.Clear();
-                StarCuenta.BienvenidoMenu();
-                opcion = int.Parse(Console.ReadLine());
+                
+                try
+                {
+                    StarCuenta.BienvenidoMenu();
+                    opcion = int.Parse(Console.ReadLine());
+                }
+                catch(FormatException e)
+                {
+                    Console.WriteLine("Error! "+e.Message);
+                    Console.WriteLine("Favor ingresar una opcion valida :)");
+                    Console.ReadKey();
+                }
+                
                 
                 switch (opcion)
                 {
                     
-                    case 1:
+                    case 1:// Transacaciones de Deposito a la cuenta
                             Console.Clear();
                             StarCuenta.Bienvenido();
-                        
-                        Console.Write("[Ingrese su pin]: ");
-                        int auxpin1 = int.Parse(Console.ReadLine());
-                        if (cuenta1.Pin == auxpin1)
+                        try
+                        {
+                            Console.Write("[Ingrese su Numero de cuenta]: ");
+                            auxNumCuenta = int.Parse(Console.ReadLine());
+                        }
+                        catch (FormatException e)
+                        {
+                            Console.WriteLine("Error! " + e.Message);
+                            Console.ReadKey();
+                        }
+                        try
+                        {
+                         Console.Write("[Ingrese su pin]: ");
+                         auxpin1 = int.Parse(Console.ReadLine());
+                        }
+                        catch (FormatException e)
+                        {
+                            Console.WriteLine("Error! " + e.Message);
+                            Console.ReadKey();
+                        }
+                                                
+                        if (cuenta1.NumeroDeCuenta == auxNumCuenta && cuenta1.Pin == auxpin1)
                             {
                             Console.Write("[Digite la cantidad de dinero a depositar]:");
                             movimientoSaldo = decimal.Parse(Console.ReadLine());
@@ -58,7 +91,7 @@ namespace TranscaccionesBacarias
                             Console.ReadKey();
                             break;
                             }
-                        if (cuenta2.Pin == auxpin1)
+                        if (cuenta2.NumeroDeCuenta ==auxNumCuenta && cuenta2.Pin == auxpin1)
                             {
                                 Console.Write("[Digite la cantidad de dinero a depositar]:");
                                 movimientoSaldo = decimal.Parse(Console.ReadLine());
@@ -77,20 +110,37 @@ namespace TranscaccionesBacarias
                             Console.ReadKey();
                             break;
                             }
-                        if (cuenta1.Pin != auxpin1 || cuenta2.Pin != auxpin1)
+                        if (cuenta1.NumeroDeCuenta != auxNumCuenta ||cuenta1.Pin != auxpin1 || cuenta2.NumeroDeCuenta != auxNumCuenta ||cuenta2.Pin != auxpin1 )
                         {
-                            Console.WriteLine("Pin incorrecto! :(");
+                            Console.WriteLine("Numero de Cuenta o Pin incorrecto! :(");
                             Console.ReadKey();
-                        }                           
+                        }                        
                         break;
 
-                    case 2:
+                    case 2: //Transcacciones de Retiro en la cuenta
                             Console.Clear();
                             StarCuenta.Bienvenido();
-
-                        Console.Write("[Ingrese su pin]: ");
-                            int auxpin2 = int.Parse(Console.ReadLine());
-                            if (cuenta1.Pin == auxpin2)
+                        try
+                        {
+                            Console.Write("[Ingrese su Numero de cuenta]: ");
+                            auxNumCuenta = int.Parse(Console.ReadLine());
+                        }
+                        catch (FormatException e)
+                        {
+                            Console.WriteLine("Error! " + e.Message);
+                            Console.ReadKey();
+                        }
+                        try
+                        {
+                            Console.Write("[Ingrese su pin]: ");
+                            auxpin1 = int.Parse(Console.ReadLine());
+                        }
+                        catch (FormatException e)
+                        {
+                            Console.WriteLine("Error! " + e.Message);
+                            Console.ReadKey();
+                        }
+                            if (cuenta1.NumeroDeCuenta == auxNumCuenta && cuenta1.Pin == auxpin1)
                             {
                                 Console.Write("[Digite la cantidad de dinero a retirar]:");
                                 movimientoSaldo = decimal.Parse(Console.ReadLine());
@@ -109,7 +159,7 @@ namespace TranscaccionesBacarias
                             Console.ReadKey();
                             break;
                             }
-                            if (cuenta2.Pin == auxpin2)
+                            if (cuenta2.NumeroDeCuenta == auxNumCuenta && cuenta2.Pin == auxpin1)
                             {
                                 Console.Write("[Digite la cantidad de dinero a retirar]:");
                                 movimientoSaldo = decimal.Parse(Console.ReadLine());
@@ -128,22 +178,61 @@ namespace TranscaccionesBacarias
                             Console.ReadKey();
                             break;
                             }
-                            if (cuenta1.Pin != auxpin2 || cuenta2.Pin != auxpin2)
-                            {
-                                Console.WriteLine("Pin incorrecto! :(");
-                                Console.ReadKey();
-                            }
+                        if (cuenta1.NumeroDeCuenta != auxNumCuenta || cuenta1.Pin != auxpin1 || cuenta2.NumeroDeCuenta != auxNumCuenta || cuenta2.Pin != auxpin1)
+                        {
+                            Console.WriteLine("Numero de Cuenta o Pin incorrecto! :(");
+                            Console.ReadKey();
+                        }
                         break;
 
-                    case 3:
+                    case 3: // Transacciones de Tranfericia de una cuenta a otra
                             Console.Clear();
                             StarCuenta.Bienvenido();
+                        try
+                        {
+                            Console.Write("[Ingrese su Numero de cuenta]: ");
+                            auxNumCuenta = int.Parse(Console.ReadLine());
+                        }
+                        catch (FormatException e)
+                        {
+                            Console.WriteLine("Error! " + e.Message);
+                            Console.ReadKey();
+                        }
+                        try
+                        {
+                            Console.Write("[Ingrese su pin]: ");
+                            auxpin1 = int.Parse(Console.ReadLine());
+                        }
+                        catch (FormatException e)
+                        {
+                            Console.WriteLine("Error! " + e.Message);
+                            Console.ReadKey();
+                        }
 
-                        Console.Write("[Ingrese su pin]: ");
-                            int auxpin3 = int.Parse(Console.ReadLine());
-                            if (cuenta1.Pin == auxpin3)
+                        if (cuenta1.NumeroDeCuenta == auxNumCuenta && cuenta1.Pin == auxpin1)
                             {
-                                Console.Write("[Digite la cantidad de dinero a transferir]:");
+                            try
+                            {
+                                Console.Write("[Ingrese el Numero de cuenta a que desea trasferir]: ");
+                                auxNumCuenta = int.Parse(Console.ReadLine());
+                            }
+                            catch (FormatException e)
+                            {
+                                Console.WriteLine("Error! " + e.Message);
+                                Console.WriteLine("Por favor verifique y vuelva intentarlo!");
+                                error++;
+                                Console.ReadKey();
+                                break;
+                                
+                            }
+                            if (auxNumCuenta != cuenta2.NumeroDeCuenta && error == 0)
+                            {
+                                Console.WriteLine("El numero de cuenta es Incorrecto o la Cuenta no Existe!");
+                                Console.WriteLine("Por favor verifique y vuelva intentarlo!");
+                                Console.ReadKey();
+                                break;
+                            }
+                            Console.Write("[Digite la cantidad de dinero a transferir]:");
                                 movimientoSaldo = decimal.Parse(Console.ReadLine());
                                 
                             Console.Clear();
@@ -160,9 +249,30 @@ namespace TranscaccionesBacarias
                             Console.ReadKey();
                             break;
                             }
-                            if (cuenta2.Pin == auxpin3)
+                            if (cuenta2.NumeroDeCuenta == auxNumCuenta && cuenta2.Pin == auxpin1)
                             {
-                                Console.Write("[Digite la cantidad de dinero a tranferir]:");
+                            try
+                            {
+                                Console.Write("[Ingrese el Numero de cuenta a que desea trasferir]: ");
+                                auxNumCuenta = int.Parse(Console.ReadLine());
+                            }
+                            catch (FormatException e)
+                            {
+                                Console.WriteLine("Error! " + e.Message);
+                                Console.WriteLine("Por favor verifique y vuelva intentarlo!");
+                                error++;
+                                Console.ReadKey();
+                                break;
+
+                            }
+                            if (auxNumCuenta != cuenta1.NumeroDeCuenta && error == 0)
+                            {
+                                Console.WriteLine("El numero de cuenta es Incorrecto o la Cuenta no Existe!");
+                                Console.WriteLine("Por favor verifique y vuelva intentarlo!");
+                                Console.ReadKey();
+                                break;
+                            }
+                            Console.Write("[Digite la cantidad de dinero a tranferir]:");
                                 movimientoSaldo = decimal.Parse(Console.ReadLine());
                                 
                             Console.Clear();
@@ -180,11 +290,11 @@ namespace TranscaccionesBacarias
                             Console.ReadKey();
                             break;
                             }
-                            if (cuenta1.Pin != auxpin3 || cuenta2.Pin != auxpin3)
-                            {
-                                Console.WriteLine("Pin incorrecto! :(");
-                                Console.ReadKey();
-                            }
+                        if (cuenta1.NumeroDeCuenta != auxNumCuenta || cuenta1.Pin != auxpin1 || cuenta2.NumeroDeCuenta != auxNumCuenta || cuenta2.Pin != auxpin1)
+                        {
+                            Console.WriteLine("Numero de Cuenta o Pin incorrecto! :(");
+                            Console.ReadKey();
+                        }
                         break;
 
                     case 4: Environment.Exit(0);
@@ -200,7 +310,7 @@ namespace TranscaccionesBacarias
                             Console.WriteLine("opcion invalida! :(");
                         break;                       
                 }
-            } while (opcion>=0 || opcion <=6 );
+            } while (opcion>=1 || opcion <=5 );
         }
     }
 }

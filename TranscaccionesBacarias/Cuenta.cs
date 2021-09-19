@@ -107,6 +107,10 @@ namespace TranscaccionesBacarias
             
           // Console.WriteLine( );
         }
+        public int NumCuenta()
+        {
+            return NumeroDeCuenta;
+        }
 
         public string Propietario()
         {
