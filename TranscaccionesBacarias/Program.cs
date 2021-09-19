@@ -11,41 +11,30 @@ namespace TranscaccionesBacarias
     {
        static void Main(string[] args)
         {
-
             Transcaciones();
             Console.ReadKey();
         }
         public static void Transcaciones()
         {
             StarCuenta.cuentas = new List<Cuenta>();
-            Cuenta cuenta1 = new Cuenta(14210, 4854, "Danny", "Sevilla", DateTime.Now, "Activo", 5000);
+            Cuenta cuenta1 = new Cuenta(14210, 4854, "Danniel", "Paniagua ", DateTime.Now, "Activo", 5000);
             Cuenta cuenta2 = new Cuenta(19441, 5050, "Maycoll", "Jaramillo", DateTime.Now, "Activo", 2000);
 
             decimal movimientoSaldo = 0;
             int opcion = 1;
-            bool respuesta = true;
+     
             do
             {
                 Console.Clear();
-                Console.WriteLine();
-                Console.WriteLine("             ╔═══════════════════════════════════════════════════════════╗");
-                Console.WriteLine("             ║ ** Bienvenido a tu Sistema de Banca en linea Preferido ** ║");
-                Console.WriteLine("             ╚═══════════════════════════════════════════════════════════╝");
-                Console.WriteLine();
-                Console.WriteLine("╔════════════════════╦════════════════════╦══════════════════════╦══════════╦═══════════════╗");
-                Console.WriteLine("║[1].Ingresar Dinero ║[2].Retirar Dinero  ║[3].Transferir Dinero ║[4].Salir ║[5].Ver Cuentas║");
-                Console.WriteLine("╚════════════════════╩════════════════════╩══════════════════════╩══════════╩═══════════════╝");
+                StarCuenta.BienvenidoMenu();
                 opcion = int.Parse(Console.ReadLine());
-
+                
                 switch (opcion)
                 {
                     
                     case 1:
                             Console.Clear();
-                            Console.WriteLine("             ╔═══════════════════════════════════════════════════════════╗");
-                            Console.WriteLine("             ║ ** Bienvenido a tu Sistema de Banca en linea Preferido ** ║");
-                            Console.WriteLine("             ╚═══════════════════════════════════════════════════════════╝");
-                            Console.WriteLine();
+                            StarCuenta.Bienvenido();
                         
                         Console.Write("[Ingrese su pin]: ");
                         int auxpin1 = int.Parse(Console.ReadLine());
@@ -53,10 +42,19 @@ namespace TranscaccionesBacarias
                             {
                             Console.Write("[Digite la cantidad de dinero a depositar]:");
                             movimientoSaldo = decimal.Parse(Console.ReadLine());
-                            cuenta1.ingresarDinero(movimientoSaldo);
+
                             Console.Clear();
                             Console.WriteLine("\n\n");
-                            Console.WriteLine("Deposito realizado con exito en la Cuenta "+cuenta1.DatosCuenta());
+                            if (cuenta1.verificarCuenta(movimientoSaldo) == 1)
+                            {
+                                cuenta1.ingresarDinero(movimientoSaldo);
+                                Console.WriteLine("Deposito de C$[" + movimientoSaldo + "] realizado con exito en la Cuenta " + cuenta1.Propietario());
+                            }
+                            else
+                            {
+                                Console.WriteLine("Dato Invalido! :(");
+                            }
+                                                      
                             Console.ReadKey();
                             break;
                             }
@@ -64,10 +62,18 @@ namespace TranscaccionesBacarias
                             {
                                 Console.Write("[Digite la cantidad de dinero a depositar]:");
                                 movimientoSaldo = decimal.Parse(Console.ReadLine());
-                                cuenta2.ingresarDinero(movimientoSaldo);
+                                
                             Console.Clear();
                             Console.WriteLine("\n\n");
-                            Console.WriteLine("Deposito realizado con exito en la Cuenta " + cuenta2.DatosCuenta());
+                            if (cuenta2.verificarCuenta(movimientoSaldo) == 1)
+                            {
+                                cuenta2.ingresarDinero(movimientoSaldo);
+                                Console.WriteLine("Deposito de C$[" + movimientoSaldo + "] realizado con exito en la Cuenta " + cuenta2.Propietario());
+                            }
+                            else
+                            {
+                                Console.WriteLine("Dato Invalido! :(");
+                            }
                             Console.ReadKey();
                             break;
                             }
@@ -80,12 +86,9 @@ namespace TranscaccionesBacarias
 
                     case 2:
                             Console.Clear();
-                            Console.WriteLine("             ╔═══════════════════════════════════════════════════════════╗");
-                            Console.WriteLine("             ║ ** Bienvenido a tu Sistema de Banca en linea Preferido ** ║");
-                            Console.WriteLine("             ╚═══════════════════════════════════════════════════════════╝");
-                            Console.WriteLine();
-                           
-                            Console.Write("[Ingrese su pin]: ");
+                            StarCuenta.Bienvenido();
+
+                        Console.Write("[Ingrese su pin]: ");
                             int auxpin2 = int.Parse(Console.ReadLine());
                             if (cuenta1.Pin == auxpin2)
                             {
@@ -94,14 +97,14 @@ namespace TranscaccionesBacarias
                                 
                             Console.Clear();
                             Console.WriteLine("\n\n");
-                            if (cuenta1.RetirarDinero(movimientoSaldo) >= 1)
+                            if (cuenta1.verificarCuenta(movimientoSaldo) == 1)
                             {
                                 cuenta1.RetirarDinero(movimientoSaldo);
-                                Console.WriteLine("Retiro realizado con exito en la Cuenta " + cuenta1.DatosCuenta());
+                                Console.WriteLine("Retiro de C$[" + movimientoSaldo + "] realizado con exito en la Cuenta " + cuenta1.Propietario());
                             }
                             else
                             {
-                                Console.WriteLine("No posee fondos suficientes! :(");
+                                Console.WriteLine("No posee fondos suficientes! o dato introducido incorrecto :(");
                             }
                             Console.ReadKey();
                             break;
@@ -113,14 +116,14 @@ namespace TranscaccionesBacarias
                                 
                             Console.Clear();
                             Console.WriteLine("\n\n");
-                            if (cuenta2.RetirarDinero(movimientoSaldo) >= 1)
+                            if (cuenta2.verificarCuenta(movimientoSaldo) == 1)
                             {
                                 cuenta2.RetirarDinero(movimientoSaldo);
-                                Console.WriteLine("Retiro realizado con exito en la Cuenta " + cuenta1.DatosCuenta());
+                                Console.WriteLine("Retiro de C$[" + movimientoSaldo + "] realizado con exito en la Cuenta " + cuenta2.Propietario());
                             }
                             else
                             {
-                                Console.WriteLine("No posee fondos suficientes! :(");
+                                Console.WriteLine("No posee fondos suficientes! o dato introducido incorrecto :(");
                             }
                             Console.ReadKey();
                             break;
@@ -134,12 +137,9 @@ namespace TranscaccionesBacarias
 
                     case 3:
                             Console.Clear();
-                            Console.WriteLine("             ╔═══════════════════════════════════════════════════════════╗");
-                            Console.WriteLine("             ║ ** Bienvenido a tu Sistema de Banca en linea Preferido ** ║");
-                            Console.WriteLine("             ╚═══════════════════════════════════════════════════════════╝");
-                            Console.WriteLine();
-                           
-                            Console.Write("[Ingrese su pin]: ");
+                            StarCuenta.Bienvenido();
+
+                        Console.Write("[Ingrese su pin]: ");
                             int auxpin3 = int.Parse(Console.ReadLine());
                             if (cuenta1.Pin == auxpin3)
                             {
@@ -148,14 +148,14 @@ namespace TranscaccionesBacarias
                                 
                             Console.Clear();
                             Console.WriteLine("\n\n");
-                            if (cuenta1.tranferirDinero(movimientoSaldo) >= 1)
+                            if (cuenta1.verificarCuenta(movimientoSaldo) == 1)
                             {
                                 cuenta2.ingresarDinero(cuenta1.tranferirDinero(movimientoSaldo));
-                                Console.WriteLine("Tranferencia realizada con exito en la Cuenta " + cuenta1.NumeroDeCuenta + " del Propietario " + cuenta1.Nombre + " " + cuenta1.Apellido);
+                                Console.WriteLine("Transferencia de C$[" + movimientoSaldo + "] realizado con exito en la Cuenta " + cuenta2.Propietario());
                             }
                             else
                             {
-                                Console.WriteLine("No posee fondos suficientes para realizar la tranferencia! :(");
+                                Console.WriteLine("No posee fondos suficientes para realizar la tranferencia! o dato introducido incorrecto :(");
                             }
                             Console.ReadKey();
                             break;
@@ -167,14 +167,14 @@ namespace TranscaccionesBacarias
                                 
                             Console.Clear();
                             Console.WriteLine("\n\n");
-                            if(cuenta2.tranferirDinero(movimientoSaldo) >= 1)
+                            if(cuenta2.verificarCuenta(movimientoSaldo) == 1)
                             {
                                 cuenta1.ingresarDinero(cuenta2.tranferirDinero(movimientoSaldo));
-                                Console.WriteLine("Tranferencia realizada con exito en la Cuenta " + cuenta1.NumeroDeCuenta + " del Propietario " + cuenta1.Nombre + " " + cuenta1.Apellido);
+                                Console.WriteLine("Transferencia de C$[" + movimientoSaldo + "] realizado con exito en la Cuenta " + cuenta1.Propietario());
                             }
                             else
                             {
-                                Console.WriteLine("No posee fondos suficientes para realizar la tranferencia! :(");
+                                Console.WriteLine("No posee fondos suficientes para realizar la tranferencia! o dato introducido incorrecto :(");
                             }
                             
                             Console.ReadKey();
@@ -197,11 +197,9 @@ namespace TranscaccionesBacarias
                         break;
 
                     default:                        
-                            Console.WriteLine("opcion invalida");
+                            Console.WriteLine("opcion invalida! :(");
                         break;                       
                 }
-             
-                    respuesta = false;
             } while (opcion>=0 || opcion <=6 );
         }
     }

@@ -36,13 +36,25 @@ namespace TranscaccionesBacarias
             this.Estado = Estado;
             this.Saldo = saldo;
         }
-        public void ingresarDinero(decimal saldo)
+        public decimal ingresarDinero(decimal saldo)
         {
-            this.Saldo += saldo;
+            if (saldo == 0 || saldo < 0)
+            {
+                return 0;
+            }
+            else
+            {
+                this.Saldo += saldo;
+                return saldo;
+            }
         }
         public decimal RetirarDinero(decimal saldo)
         {
-            if (this.Saldo == 0)
+            if (this.Saldo == 0 || this.Saldo < 0)
+            {
+                return 0;
+            }
+            if (this.Saldo < saldo)
             {
                 return 0;
             }
@@ -54,20 +66,51 @@ namespace TranscaccionesBacarias
         }
         public decimal tranferirDinero(decimal saldo)
         {
-            if (this.Saldo == 0)
-            {                
+            if (saldo <= 0 )
+            {
+                if (this.Saldo < saldo)
+                {
+                    return 0;
+                }
                 return 0;
             }
             else
             {
                 this.Saldo -= saldo;
                 return saldo;
-            }                          
+            }
+        }
+        public decimal verificarCuenta(decimal saldo)
+        {
+            if (saldo <= 0)
+            {
+                return 0;
+            }
+            if (this.Saldo < saldo)
+            {
+                return 0;
+            }
+            else
+            {
+                return 1;
+            }
+
         }
 
         public string DatosCuenta()
         {
-            return NumeroDeCuenta +" " + Nombre+ " "+ Apellido + " " + Saldo;
+            Console.WriteLine(" ╔═════════════════════════════════════════════════════════════╗");
+            Console.WriteLine("  Nº Cuenta: " + NumeroDeCuenta + " Propietario: "+ Nombre +" "+ Apellido + " Saldo: "+ Saldo +"");
+            Console.WriteLine(" ╚═════════════════════════════════════════════════════════════╝");
+            Console.WriteLine();
+            return null;
+            
+          // Console.WriteLine( );
+        }
+
+        public string Propietario()
+        {
+           return NumeroDeCuenta + " del Propietario: " + Nombre + " " + Apellido;
         }
     }
 }
