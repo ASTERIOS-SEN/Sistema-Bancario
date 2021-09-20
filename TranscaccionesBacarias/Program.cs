@@ -11,15 +11,17 @@ namespace TranscaccionesBacarias
     {
        static void Main(string[] args)
         {
-            Transcaciones();
+            Transcaciones();//Transacciones Bancarias
             Console.ReadKey();
         }
         public static void Transcaciones()
         {
+            // Inicializar Cuentas Bancarias
             StarCuenta.cuentas = new List<Cuenta>();
             Cuenta cuenta1 = new Cuenta(14210, 4854, "Danniel", "Paniagua ", DateTime.Now, "Activo", 5000);
             Cuenta cuenta2 = new Cuenta(19441, 5050, "Maycoll", "Jaramillo", DateTime.Now, "Activo", 2000);
 
+            //Variables de apoyo a las Tranferencias
             decimal movimientoSaldo = 0;
             int opcion = 0;
             int auxNumCuenta = 0;
@@ -31,7 +33,7 @@ namespace TranscaccionesBacarias
             {
                 Console.Clear();
                 
-                try
+                try//validacion de opcion
                 {
                     StarCuenta.BienvenidoMenu();
                     opcion = int.Parse(Console.ReadLine());
@@ -72,10 +74,19 @@ namespace TranscaccionesBacarias
                         }
                                                 
                         if (cuenta1.NumeroDeCuenta == auxNumCuenta && cuenta1.Pin == auxpin1)
+                            {                           
+                            try
                             {
-                            Console.Write("[Digite la cantidad de dinero a depositar]:");
-                            movimientoSaldo = decimal.Parse(Console.ReadLine());
-
+                                Console.Write("[Digite la cantidad de dinero a depositar]:");
+                                movimientoSaldo = decimal.Parse(Console.ReadLine());
+                            }
+                            catch(FormatException e)
+                            {
+                                Console.WriteLine("Error! " + e.Message);
+                                Console.ReadKey();
+                                break;
+                            }
+                            
                             Console.Clear();
                             Console.WriteLine("\n\n");
                             if (cuenta1.verificarCuenta(movimientoSaldo) == 1)
@@ -93,9 +104,17 @@ namespace TranscaccionesBacarias
                             }
                         if (cuenta2.NumeroDeCuenta ==auxNumCuenta && cuenta2.Pin == auxpin1)
                             {
+                            try
+                            {
                                 Console.Write("[Digite la cantidad de dinero a depositar]:");
                                 movimientoSaldo = decimal.Parse(Console.ReadLine());
-                                
+                            }
+                            catch (FormatException e)
+                            {
+                                Console.WriteLine("Error! " + e.Message);
+                                Console.ReadKey();
+                                break;
+                            }
                             Console.Clear();
                             Console.WriteLine("\n\n");
                             if (cuenta2.verificarCuenta(movimientoSaldo) == 1)
@@ -142,8 +161,17 @@ namespace TranscaccionesBacarias
                         }
                             if (cuenta1.NumeroDeCuenta == auxNumCuenta && cuenta1.Pin == auxpin1)
                             {
+                            try
+                            {
                                 Console.Write("[Digite la cantidad de dinero a retirar]:");
                                 movimientoSaldo = decimal.Parse(Console.ReadLine());
+                            }
+                            catch (FormatException e)
+                            {
+                                Console.WriteLine("Error! " + e.Message);
+                                Console.ReadKey();
+                                break;
+                            }
                                 
                             Console.Clear();
                             Console.WriteLine("\n\n");
@@ -161,9 +189,18 @@ namespace TranscaccionesBacarias
                             }
                             if (cuenta2.NumeroDeCuenta == auxNumCuenta && cuenta2.Pin == auxpin1)
                             {
+                            try
+                            {
                                 Console.Write("[Digite la cantidad de dinero a retirar]:");
                                 movimientoSaldo = decimal.Parse(Console.ReadLine());
-                                
+                            }
+                            catch (FormatException e)
+                            {
+                                Console.WriteLine("Error! " + e.Message);
+                                Console.ReadKey();
+                                break;
+                            }
+
                             Console.Clear();
                             Console.WriteLine("\n\n");
                             if (cuenta2.verificarCuenta(movimientoSaldo) == 1)
@@ -213,7 +250,7 @@ namespace TranscaccionesBacarias
                             {
                             try
                             {
-                                Console.Write("[Ingrese el Numero de cuenta a que desea trasferir]: ");
+                                Console.Write("[Ingrese el Numero de cuenta a trasferir]: ");
                                 auxNumCuenta = int.Parse(Console.ReadLine());
                             }
                             catch (FormatException e)
@@ -232,9 +269,18 @@ namespace TranscaccionesBacarias
                                 Console.ReadKey();
                                 break;
                             }
-                            Console.Write("[Digite la cantidad de dinero a transferir]:");
+                            try
+                            {
+                                Console.Write("[Digite la cantidad de dinero a Transferir]:");
                                 movimientoSaldo = decimal.Parse(Console.ReadLine());
-                                
+                            }
+                            catch (FormatException e)
+                            {
+                                Console.WriteLine("Error! " + e.Message);
+                                Console.ReadKey();
+                                break;
+                            }
+                                                            
                             Console.Clear();
                             Console.WriteLine("\n\n");
                             if (cuenta1.verificarCuenta(movimientoSaldo) == 1)
@@ -253,7 +299,7 @@ namespace TranscaccionesBacarias
                             {
                             try
                             {
-                                Console.Write("[Ingrese el Numero de cuenta a que desea trasferir]: ");
+                                Console.Write("[Ingrese el Numero de cuenta a Transferir]: ");
                                 auxNumCuenta = int.Parse(Console.ReadLine());
                             }
                             catch (FormatException e)
@@ -272,9 +318,18 @@ namespace TranscaccionesBacarias
                                 Console.ReadKey();
                                 break;
                             }
-                            Console.Write("[Digite la cantidad de dinero a tranferir]:");
+                            try
+                            {
+                                Console.Write("[Digite la cantidad de dinero a Transferir]:");
                                 movimientoSaldo = decimal.Parse(Console.ReadLine());
-                                
+                            }
+                            catch (FormatException e)
+                            {
+                                Console.WriteLine("Error! " + e.Message);
+                                Console.ReadKey();
+                                break;
+                            }
+
                             Console.Clear();
                             Console.WriteLine("\n\n");
                             if(cuenta2.verificarCuenta(movimientoSaldo) == 1)
